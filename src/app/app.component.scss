@@ -1,0 +1,27 @@
+::ng-deep .ngx-pagination {
+  display: flex !important;
+  justify-content: center !important;
+  padding: 0 !important;
+  // padding-top: 20px !important;
+  // padding-left: 35% !important;
+  // padding-right: 35% !important;
+  // position: absolute;
+  margin-top: 30px;
+  padding-bottom: 20px !important;
+}
+
+::ng-deep .ngx-pagination .current {
+  background-color: #EDE6E2 !important;
+  color: #703317 !important;
+  font-size: 16px;
+}
+
+::ng-deep .ngx-pagination a {
+  color: #A27051 !important;
+}
+
+::ng-deep .ngx-pagination li {
+  border: 1px solid #ECEEEF;
+  margin: 0 !important;
+  width: 30px;
+}

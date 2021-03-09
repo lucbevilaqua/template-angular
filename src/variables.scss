@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap');
+@import "~@ng-select/ng-select/themes/default.theme.css";
+
+// Colors
+$white: #ffff;
+$dark: #ECEEEF;
+$brown-white: #EDE6E2;
+$light-brown: #A3704E;
+$dark-bronw: #A27051;
+$fluorescent-green: #4CD964;
+$red: #ED1C24;
+$orange: #FF9500;
+$coral-red: #dc3545;
+$red-wine: #CB0017;
+$green-lemon: #1E981D;
+$brown: #703317;
+$soft-gray: #666666;
+$dark-grey: #4a4339;
+$blue: #002664;
+$black: #0000;
+$yellow: #FFCC00;
+
+// Background Project and Fonts
+$background-body-top: '';
+$background-body-bottom: '';
+$font-generic: 'Roboto', sans-serif;
+$color-font-awesome: $brown;
+
+// Disable inputs
+$input_disabled: #FAFAFA;
+$select-disabled: #fbf5f1;
+
+// scrollbar
+$scrollbar: $brown-white;
+
+// Colors inputs
+$inputs-text-color: $light-brown;
+$titles-color: $dark-bronw;
+$border-focus-input: $brown-white;
+$table-text-color: $brown;
+
+// Backgrounds inputs
+$radio-background: $brown;
+$checkbox-background-color: $brown;
+$inputs-background: $brown-white;
+
+// Pagination
+$background-active-pagination: $brown-white;
+$color-active-pagination: $brown;
+$color-pagination: $brown;
+$align-pagination: center;
+
+// ng-select
+$select-disabled: none;
+$select-background-painel: transparent;
+$select-border: none;
+$select-border-radius: 0px;
+$select-delete-item: none;
+$select-background-value-selected: transparent;
+
+// Icons
+$card-photo: $brown-white;
+$color-warning: $light-brown;
+$invalid-icon: "data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='12' hei…circle cx='6' cy='8.2' r='.6' fill='%23dc3545' stroke='none'/%3e%3c/svg%3e";

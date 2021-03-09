@@ -14,5 +14,6 @@ export class AppComponent {
 
   constructor(private config: NgSelectConfig, private state: State<SharedState>) {
     this.config.notFoundText = 'Nenhum dado encontrado';
+    this.config.disableVirtualScroll = false;
   }
 }

@@ -1,0 +1,75 @@
+
+.ng-select {
+    * {
+        color: $inputs-text-color !important;
+        font-size: 15px;
+        font-weight: 500 !important;
+    }
+    .ng-clear {
+        color: $red !important;
+    }
+    .ng-select-container {
+        justify-content: space-between;
+        background: $select-background-painel;
+        border: $select-border;
+        border-radius: $select-border-radius;
+        outline: none;
+    }
+}
+
+.ng-select.ng-select-multiple .ng-select-container .ng-value-container .ng-value,
+.ng-select.ng-select-single .ng-select-container .ng-value-container .ng-value,
+.ng-dropdown-panel .ng-dropdown-panel-items .ng-option {
+    color: $inputs-text-color !important;
+}
+.ng-select.ng-select-opened>.ng-select-container {
+    background: $select-background-painel;
+}
+
+.ng-dropdown-panel .ng-dropdown-panel-items .ng-option {
+    background: $inputs-background;
+}
+
+.ng-select.ng-select-multiple .ng-select-container .ng-value-container,
+.ng-select.ng-select-single .ng-select-container .ng-value-container {
+    width: 311px;
+    flex-wrap: inherit !important;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    .ng-value {
+        background: $select-background-value-selected;
+        .ng-value-icon.left {
+            display: $select-delete-item;
+            border: none;
+        }
+    }
+}
+
+.icon-left.ng-select.ng-select-multiple .ng-select-container .ng-value-container .ng-value .ng-value-icon.left {
+    display: inline-block;
+    color: red !important;
+}
+
+.ng-select.ng-select-focused:not(.ng-select-opened)>.ng-select-container {
+    border-color: none;
+    box-shadow: none;
+}
+
+.disabled .ng-select-container, .disabled .ng-select-container input{
+    pointer-events: none;
+    background: $select-disabled;
+}
+ 
+.is-not-editing .ng-select .ng-select-container {
+    background: $white;
+}
+
+.ng-dropdown-panel.ng-select-bottom {
+    max-height: 180px;
+    height: auto;
+}
+
+.ng-dropdown-panel .ng-dropdown-panel-items {
+    max-height: inherit !important;
+}

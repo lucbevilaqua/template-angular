@@ -8,11 +8,11 @@
       "schematics": {
         "@schematics/angular:component": {
           "style": "scss",
-          "spec": false 
+          "spec": false
         },
         "@schematics/angular:service": {
           "style": "scss",
-          "spec": false 
+          "spec": false
         },
         "@schematics/angular:module": {
           "routing": true
@@ -149,6 +149,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "sgm-front"
+    }
+  },
+  "defaultProject": "sgm-front",
+  "cli": {
+    "analytics": "62824063-c377-492e-96a5-3188f385e67f"
+  }
 }

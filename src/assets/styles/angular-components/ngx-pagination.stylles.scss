@@ -1,0 +1,18 @@
+.ngx-pagination .pagination-next a::after, .ngx-pagination .pagination-next.disabled::after {
+    margin-left: initial !important;
+}
+
+.page-item.active .page-link {
+    background-color: $background-active-pagination !important;
+    border-color: $background-active-pagination !important;
+    color: $color-active-pagination !important;
+}
+
+.page-item .page-link {
+    color: $color-pagination !important;
+    background-color: $white
+}
+
+ngb-pagination .pagination {
+    justify-content: $align-pagination;
+}

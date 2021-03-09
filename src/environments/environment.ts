@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  baseApiUrl: 'http://sgmapi.luxfacta.com.br/api/',
+  baseApiUrl: '',
   sentryDsn: '',
 };
 

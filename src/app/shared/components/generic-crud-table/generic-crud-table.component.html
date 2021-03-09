@@ -1,0 +1,73 @@
+<form [formGroup]="form" [style.max-height]="maxHeight + 'px'" class="mt-3 scrollbar form-container p-1 pl-0 pr-0" >
+    <div class="d-flex header-fixed" *ngIf="config?.headers?.length > 0">
+        <span class="title-block mr-2" *ngFor="let title of config.headers">{{ title }}</span>
+        <span class="empty-column"></span>
+        <span class="empty-column"></span>
+    </div>
+    <div class="mt-2" formArrayName="items" *ngFor="let item of form.get('items').controls; let i = index;">
+        <div class="d-flex" [formGroupName]="i">
+            <div class="mr-2"
+                *ngFor="let column of config?.columns"
+                [style.width]="(100/config?.columns.length) + '%'"
+                [title]="(column.options.inputType === 'text' || column.options.inputType === 'number') ? formList.value[i][column.key] : selectedValueText(column.key, column.options.configSelect, i)">
+
+                <ng-container *ngTemplateOutlet="(column.options.inputType === 'text' || column.options.inputType === 'number') ? text : select; context:column"></ng-container>
+
+                <ng-template #text>
+                    <div class="custom-form mr-1 h-100">
+                        <div class="input-content h-100">
+                            <input class="form-control default-control pt-4 h-100"
+                                [formControlName]="column.key"
+                                [class.is-not-editing]="!isEditing(i) && (column.options?.readonly ? !column.options.readonly(): true)"
+                                [class.is-invalid]="isInvalid(i, column.key) && !isEditing(i)"
+                                [dropSpecialCharacters]="column.options.dropSpecialCharacters"
+                                [mask]='column.options.mask'
+                                [type]='column.options.inputType'>
+                            <span class="floating-label">
+                                {{ column.text }}
+                            </span>
+                        </div>
+                    </div>
+                </ng-template>
+
+                <ng-template #select
+                              let-configSelect="options.configSelect">
+                    <div class="custom-select-wrap"
+                        *ngIf="isEditing(i) && (column.options?.readonly ? !column.options.readonly(): true) else selectedViewValue"
+                        [class.is-invalid]="isInvalid(i, column.key) && !isEditing(i)">
+                        <label>{{ column.text }}</label>
+                        <div class="pt-4">
+                            <ng-select  [items]="configSelect.request()"
+                                        [bindLabel]="configSelect.text"
+                                        [bindValue]="configSelect.key"
+                                        appendTo="body"
+                                        [dropdownPosition]="'bottom'"
+                                        (change)="changeSelected(configSelect, $event, i)"
+                                        [closeOnSelect]="configSelect.closeOnSelect"
+                                        [multiple]="configSelect.multiple"
+                                        [formControlName]="column.key">
+                            </ng-select>
+                        </div>
+                    </div>
+                </ng-template>
+
+                <ng-template #selectedViewValue>
+                    <div class="custom-form mr-2">
+                        <div class="input-content h-100">
+                            <input class="form-control is-not-editing default-control pt-4"
+                                [value]="selectedValueText(column.key, column.options.configSelect, i)"
+                                [class.is-invalid]="isInvalid(i, column.key)">
+                            <span class="floating-label">
+                                {{ column.text }}
+                            </span>
+                        </div>
+                    </div>
+                </ng-template>
+            </div>
+            <span class="row-button mr-3" *ngIf="!isEditing(i)" (click)="enableEdit(i, item.value)"><img src="assets/icons/edit.svg" alt="edit"></span>
+            <span class="row-button mr-3" *ngIf="!isEditing(i)" (click)="removeItem(i)"><img src="assets/icons/delete.svg" alt="delete"></span>
+            <span class="row-button mr-3" *ngIf="isEditing(i)" (click)="confirmEdit(i)"><img src="assets/icons/confirm.svg" alt="confirm"></span>
+            <span class="row-button mr-3" *ngIf="isEditing(i)" (click)="disableEdit(i)"><img class="cancel-icon" src="assets/icons/cancel.svg" alt="cancel"></span>
+        </div>
+    </div>
+</form>

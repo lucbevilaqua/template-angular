@@ -22,3 +22,8 @@ export const selectAuthAuthenticated = createSelector(
   selectAuthState,
   state => state.authenticated
 );
+
+export const selectItemAuth = createSelector(
+  selectAuthState,
+  (state, props) => state[props]
+);

@@ -1,0 +1,88 @@
+$active: #E7E7E7;
+
+table tbody {
+    background: border-box;
+    background-color: white;
+    box-shadow: 0px 5px 20px #0000000A;
+    border-radius: 16px;
+    border-collapse: collapse;
+}
+
+table td {
+    // padding: 10px 20px;
+    max-width: 120px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+table th {
+    padding: 0 20px;
+    // color: white;
+    max-width: 140px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+table tbody td {
+    display: table-cell;
+    padding: 5px 11px;
+}
+
+table tbody tr:first-child td:first-child {
+    border-top-left-radius: 15px;
+}
+
+table tbody tr:first-child td:last-child {
+    border-top-right-radius: 15px;
+}
+
+table tbody tr:last-child td:first-child {
+    border-bottom-left-radius: 15px;
+}
+
+table tbody tr:last-child td:last-child {
+    border-bottom-right-radius: 15px;
+}
+
+table tbody .td-action {
+    white-space: nowrap;
+    // max-width: 129px;
+    max-width: min-content;
+}
+
+table thead .td-item {
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px/50px;
+    color: #666666;
+    max-width: min-content;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+table tbody .td-custom {
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px/50px;
+    max-width: 213px;
+}
+
+.empty-table{
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px/50px;
+    color: #666666;
+}
+
+table {
+    border-bottom-left-radius: 16px;
+    border-bottom-right-radius: 16px;
+    .active {
+        background: $active;
+    }
+}
+
+.disable-tab {
+    cursor: not-allowed !important;
+    pointer-events: none;
+}

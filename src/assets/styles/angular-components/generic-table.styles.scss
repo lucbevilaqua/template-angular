@@ -1,0 +1,25 @@
+table {
+    // table-layout: fixed;
+    width: 100%;
+}
+
+.table-font {
+    color: $table-text-color;  
+    font-size: 14px;
+}
+
+.table-font-small {
+    font-size: 12px;
+}
+
+tr {
+    height: 60px;
+}
+
+table tbody tr:nth-child(2n) {
+    background: #FCFCFC ;
+}
+
+.container {
+    max-width: 1200px !important;
+}

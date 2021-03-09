@@ -1,0 +1,39 @@
+.modal-content {
+    padding: 15px;
+    box-shadow: 0px 5px 20px #00000029  !important;
+    border: 1px solid #00000033  !important;
+    border-radius: 13px  !important;
+    .modal-title {
+        font-size: 24px;
+        color: #212121;
+    }
+    label{
+        font-size: 16px/18px;
+        color: #212121;
+    }
+    ::-webkit-input-placeholder {
+        font-size: 16px/24px;
+        color: #212121;
+        opacity: 0.5;
+    }
+}
+
+.modal-header {
+    span{
+        font-family: 'Roboto', sans-serif;
+        font-size: 22px;
+        color: #00000033;
+    }
+}
+
+
+@media (min-width: 1200px) {
+    .modal-ml {
+        max-width: 868px !important;
+    }
+}
+@media (min-width: 992px) {
+    .modal-lg, .modal-ml {
+        max-width: 872px !important;
+    }
+}

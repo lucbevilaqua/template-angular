@@ -17,3 +17,18 @@ export const selectMessageAlert = createSelector(
   selectSharedState,
   state => state.messageAlert
 );
+
+export const selectRequestProgress = createSelector(
+  selectSharedState,
+  state => state.requestProgress
+);
+
+export const selectItemShared = createSelector(
+  selectSharedState,
+  (state, props) => state[props]
+);
+
+export const selectList = createSelector(
+  selectSharedState,
+  (state, props) => state[props]
+);

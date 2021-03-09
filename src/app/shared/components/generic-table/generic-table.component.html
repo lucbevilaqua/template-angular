@@ -1,0 +1,92 @@
+<div class="submenu-content">
+    <div class="submenu-header"
+        *ngIf="config?.menuNavigation.length > 0 || config?.search || config?.headerButtons.length > 0">
+        <tr *ngIf="config?.menuNavigation.length > 0 || config?.search" class="d-flex">
+            <th [attr.colspan]="config?.columns.length + (config?.actions.length > 0 ? 1 : 0)"
+                class="submenu-button pointer"
+                *ngFor="let navigation of config?.menuNavigation; let i = index"
+                (click)="changeTab(i, navigation)"
+                [ngClass]="tabActive === i ? 'submenu-button-active' : ''"
+                [class.disable-tab]="tabActive === i">
+                <div class="d-flex justify-content-space-around">
+                    <small *ngIf="navigation?.options?.count && navigation.options.count(tableData) > 0"
+                            class="ball ball-red mr-2">
+                        {{ navigation.options.count(tableData) }}
+                    </small>
+                    {{ navigation.text }}
+                </div>
+            </th>
+        </tr>
+
+        <tr *ngIf="config?.headerButtons.length > 0" class="table-font d-flex align-items-center mr-2">
+            <th [attr.colspan]="1">
+                <div *ngFor="let btn of config?.headerButtons; let i = index">
+                    <button class="ml-5 btn" [ngClass]="btn.type" (click)="btn.callback(btn.text)">{{ btn.text }}</button>
+                </div>
+            </th>
+        </tr>
+    </div>
+</div>
+<div *ngIf="config?.headerTemplate" class="container pt-4 d-flex align-items-center bg-white">
+    <ng-container *ngTemplateOutlet="config.headerTemplate;context:this"></ng-container>
+</div>
+
+<table *ngIf="config" class="table-hover bg-white">
+    <thead *ngIf="!config?.ignoreHeader">
+        <tr class="table-font bold">
+            <th *ngFor="let column of config?.columns">{{ column.text }}</th>
+            <th *ngFor="let column of config?.columnCustom">{{ column.text }}</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of tableData" class="table-font"
+            [ngStyle]="config?.lineStyle ? config?.lineStyle(item): ''">
+
+            <td *ngFor="let column of config?.columns">
+                <ng-container *ngTemplateOutlet="typeof(column, 'object') ? arrayLine:  lineComum; context:item">
+                </ng-container>
+
+                <ng-template #lineComum>
+                  <div class="td-item"
+                        [title]="item[column.key] | genericPipe: column.options : null"
+                        [ngClass]="column.options.customClass ? column.options.customClass(item) : ''">
+                    {{ item[column.key] | genericPipe: column.options }}
+                  </div>
+                </ng-template>
+
+                <ng-template #arrayLine>
+                    <td class="td-item">
+                        <div *ngFor="let text of column.text; let i = index" class="td-item" style="max-width: 120px;">
+                            <small>{{ text }}</small><br>
+                            <strong [ngClass]="column.options.customClass ? column.options.customClass(item) : ''">
+                                {{ item[column.key[i]] | genericPipe: column.options : i }}
+                            </strong><br>
+                        </div>
+                    </td>
+                </ng-template>
+            </td>
+
+            <td *ngFor="let column of config?.columnCustom" class="td-custom">
+                <ng-container *ngTemplateOutlet="column.columnTemplate;context:item"></ng-container>
+            </td>
+            <td class="td-action" *ngIf="config?.actions.length > 0">
+                <div class="mr-1 float-right" *ngFor="let action of config?.actions; let i = index">
+                    <button class="btn"
+                            *ngIf="action.options?.condition ? action.options.condition(item) : true"
+                            [disabled]="(action.options?.disabled && action.options?.disabled(item)) || false"
+                            [title]="action.options?.title ? action.options?.title(item) : ''"
+                            [ngClass]="action.options?.btnStyle ? action.options?.btnStyle(item) : action.btnClass"
+                            (click)="action.onClick(item)">
+                        <span class="fa icon " [ngClass]="action.icon" *ngIf="action.icon"></span>
+                        {{ action.text }}
+                    </button>
+                </div>
+            </td>
+        </tr>
+        <tr *ngIf="!tableData || tableData.length == 0">
+            <td class="text-center empty-table" [attr.colspan]="config?.columns.length + config?.columnCustom.length">
+                {{ config.messageForEmptyTable }}
+            </td>
+        </tr>
+    </tbody>
+</table>

@@ -17,6 +17,11 @@ import { MasterPageComponent } from './pages/master-page/master-page.component';
 import { DialogComponent } from './components/dialog/dialog.component';
 import { ModalComponent } from './components/modal/modal.component';
 import { CloseModalDirective } from './directives/close-modal.directive';
+import { GenericTableComponent } from './components/generic-table/generic-table.component';
+import { GenericCrudTableComponent } from './components/generic-crud-table/generic-crud-table.component';
+import { GenericPageComponent } from './components/generic-page/generic-page.component';
+import { NgxMaskModule } from 'ngx-mask';
+import { GenericPipe } from './pipes/generic-pipe.pipe';
 
 @NgModule({
   declarations: [
@@ -28,7 +33,11 @@ import { CloseModalDirective } from './directives/close-modal.directive';
     NavbarComponent,
     MasterPageComponent,
     DialogComponent,
-    ModalComponent
+    ModalComponent,
+    GenericTableComponent,
+    GenericCrudTableComponent,
+    GenericPageComponent,
+    GenericPipe
   ],
   imports: [
     CommonModule,
@@ -37,6 +46,7 @@ import { CloseModalDirective } from './directives/close-modal.directive';
     FormsModule,
     ReactiveFormsModule,
     NgSelectModule,
+    NgxMaskModule.forRoot(),
     EffectsModule.forFeature([ SharedEffects ]),
     StoreModule.forFeature('shared', SharedReducer)
   ],
@@ -47,6 +57,11 @@ import { CloseModalDirective } from './directives/close-modal.directive';
     LoadingComponent,
     DialogComponent,
     AlertComponent,
+    CloseModalDirective,
+    GenericPageComponent,
+    ModalComponent,
+    GenericCrudTableComponent,
+    GenericTableComponent,
   ]
 })
 export class SharedModule { }

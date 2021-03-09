@@ -1,0 +1,20 @@
+<app-modal [header]="'Exemple'" [size]="modalSize.LARGE">
+  <form [formGroup]="form">
+
+    Body
+
+    <button (click)="genericCrudTable.addItem()">Add row</button>
+    <button (click)="addData()">Add Data</button>
+
+    <app-generic-crud-table
+      [(resultList)]="crudList"
+      [config]="configCrudTable"
+      #genericCrudTable
+    >
+    </app-generic-crud-table>
+  </form>
+
+  <div footer>
+   is Footer
+  </div>
+</app-modal>
