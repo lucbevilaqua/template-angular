@@ -1,0 +1,10 @@
+<app-modal [header]="dialog.title" [closeable]="false">
+    <span [innerHtml]="dialog.message"></span>
+    <button class="btn btn-filter" id="no" (click)="this.modal.hide()" footer>
+        Cancelar
+    </button>
+    <button class="btn btn-danger" id="yes" (click)="dialog.success(); this.modal.hide();" footer>
+        <span class="fa fa-trash"></span>
+        Apagar
+    </button>
+</app-modal>

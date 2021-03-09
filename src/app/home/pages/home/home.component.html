@@ -1,0 +1,7 @@
+<p>Home Page</p>
+
+<div *hasPermission="[Permissions.RecebimentoMaterialNotaEPedido]">Diretiva utilizada para exibir o elemento caso tenha TODAS as permissões do Array</div>
+<div *hasAnyPermission="[Permissions.RecebimentoMaterialNotaEPedido]">Diretiva utilizada para exibir o elemento caso tenha AO MENOS UMA permissão do Array</div>
+
+<button class="btn btn-success mb-2" (click)="showAlert()">Exemplo de Alert</button><br>
+<button class="btn btn-info" (click)="showDialog()">Exemplo de Dialog</button>
